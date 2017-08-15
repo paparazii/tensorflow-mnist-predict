@@ -94,7 +94,7 @@ def predictint(imvalue):
     """
     with tf.Session() as sess:
         sess.run(init_op)
-        saver.restore(sess, "model2.ckpt")
+        saver.restore(sess, "ckpt/model2.ckpt")
         #print ("Model restored.")
        
         prediction=tf.argmax(y_conv,1)
@@ -114,7 +114,7 @@ def imageprepare(argv):
     if width > height: #check which dimension is bigger
         #Width is bigger. Width becomes 20 pixels.
         nheight = int(round((20.0/width*height),0)) #resize height according to ratio width
-        if (nheigth == 0): #rare case but minimum is 1 pixel
+        if (nheight == 0): #rare case but minimum is 1 pixel
             nheigth = 1  
         # resize and sharpen
         img = im.resize((20,nheight), Image.ANTIALIAS).filter(ImageFilter.SHARPEN)
@@ -148,4 +148,5 @@ def main(argv):
     print (predint[0]) #first value in list
     
 if __name__ == "__main__":
-    main(sys.argv[1])
+    # main(sys.argv[1])
+    main('6.png')
